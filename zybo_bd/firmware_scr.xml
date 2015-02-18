@@ -1,0 +1,7 @@
+<project name="SDK Script" default="main">
+<target name="main">
+<createHwProject projname="hw" hwspecpath="system.hdf" />
+<createBspProject projname="bsp" hwprojname="hw" processor="ps7_cortexa9_0" os="standalone" />
+<createAppProject projname="app" hwprojname="hw" processor="ps7_cortexa9_0" bspprojname="bsp" os="standalone" template="Hello World" language="C" />
+</target>
+</project>

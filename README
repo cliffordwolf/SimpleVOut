@@ -1,0 +1,64 @@
+
+SimpleVOut -- A Simple FPGA Core for Creating VGA/DVI/HDMI/OpenLDI Signals
+==========================================================================
+
+SimpleVOut (SVO) is a simple set of FPGA cores for creating video signals
+in various formats. The cores connect using AXI-streams. Most configurations
+(resolution, framerate, colordepth, etc.) are set at compile-time using
+Verilog parameters. See svo_defines.vh for details on those parameters.
+
+This directory contains:
+
+    svosrc/
+      This is the actual SVO sourcecode. If you use SVO simply copy this
+      directory into your project.
+
+    vivado_ip/
+      An example Vivado IP wrapper (simplehdmi) for SVO. This IP provides a
+      video DMA and a simple terminal overlay and creates DVI/HDMI signals.
+
+    zybo_vl/
+      An example design using SVO for the Zybo Board (Xilinx Vivado). This
+      example is written in Verilog HDL.
+
+    zybo_bd/
+      An example Vivado block-design using the IPs from vivado_ip/.
+
+The svosrc/ directory contains the following cores for outputing video
+streams in different formats (see zybo_vl/system.v for usage examples):
+
+    svo_enc.v
+      The video "encoder". Other frameworks call this component a video
+      timings generator. The output of this core can be fed directly
+      into a DAC to create a VGA signal.
+
+    svo_openldi.v
+      This takes the svo_enc-output and creates an OpenLDI (aka LVDS)
+      video signal.
+
+    svo_tmds.v
+      This takes the svo_enc-output and creates a DVI/HDMI video signal.
+
+The following cores can be used to create video streams:
+
+    svo_tcard.v
+      This core generates a static test card.
+
+    svo_pong.v
+      A little pong game. This is implemented as video overlay, so it
+      is perfect as an easter-egg for your design.
+
+    svo_term.v
+      A text terminal. Only stores the last N (default=2048) characters
+      and scrolls when running out of character memory. Good for
+      dislaying debug information (such as early boot messages).
+
+    svo_vdma.v
+      A video DMA controller. Has a read-only AXI4 master interface to
+      access the video memory.
+
+See also svo_utils.v for various helpers for combining video streams. The
+svo_pong core is in fact a collection of various cores generating video
+overlays that are combined using the helper modules from svo_utils.v. So
+have a look at svo_pong.v for usage examples for the stuff in svo_utils.v.
+

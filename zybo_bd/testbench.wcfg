@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="testbench_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="testbench" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="9" />
+   <wvobject db_ref_id="1" type="logic" fp_name="/testbench/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/testbench/led_0">
+      <obj_property name="ElementShortName">led_0</obj_property>
+      <obj_property name="ObjectShortName">led_0</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/testbench/tmds_clk_n">
+      <obj_property name="ElementShortName">tmds_clk_n</obj_property>
+      <obj_property name="ObjectShortName">tmds_clk_n</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/testbench/tmds_clk_p">
+      <obj_property name="ElementShortName">tmds_clk_p</obj_property>
+      <obj_property name="ObjectShortName">tmds_clk_p</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/testbench/tmds_d_n">
+      <obj_property name="ElementShortName">tmds_d_n[2:0]</obj_property>
+      <obj_property name="ObjectShortName">tmds_d_n[2:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/testbench/tmds_d_p">
+      <obj_property name="ElementShortName">tmds_d_p[2:0]</obj_property>
+      <obj_property name="ObjectShortName">tmds_d_p[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group13">
+      <obj_property name="label">VDMA CFG AXI</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/resetn">
+         <obj_property name="ElementShortName">resetn</obj_property>
+         <obj_property name="ObjectShortName">resetn</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_awvalid">
+         <obj_property name="ElementShortName">cfg_axi_awvalid</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_awvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_awready">
+         <obj_property name="ElementShortName">cfg_axi_awready</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_awready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_awaddr">
+         <obj_property name="ElementShortName">cfg_axi_awaddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_awaddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_wvalid">
+         <obj_property name="ElementShortName">cfg_axi_wvalid</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_wvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_wready">
+         <obj_property name="ElementShortName">cfg_axi_wready</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_wready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_wdata">
+         <obj_property name="ElementShortName">cfg_axi_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_bvalid">
+         <obj_property name="ElementShortName">cfg_axi_bvalid</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_bvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_bready">
+         <obj_property name="ElementShortName">cfg_axi_bready</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_bready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_arvalid">
+         <obj_property name="ElementShortName">cfg_axi_arvalid</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_arvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_arready">
+         <obj_property name="ElementShortName">cfg_axi_arready</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_arready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_araddr">
+         <obj_property name="ElementShortName">cfg_axi_araddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_araddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_rvalid">
+         <obj_property name="ElementShortName">cfg_axi_rvalid</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_rvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_rready">
+         <obj_property name="ElementShortName">cfg_axi_rready</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_rready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/cfg_axi_rdata">
+         <obj_property name="ElementShortName">cfg_axi_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">cfg_axi_rdata[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group14">
+      <obj_property name="label">VDMA MEM AXI</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/resetn">
+         <obj_property name="ElementShortName">resetn</obj_property>
+         <obj_property name="ObjectShortName">resetn</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/mem_axi_araddr">
+         <obj_property name="ElementShortName">mem_axi_araddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mem_axi_araddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/mem_axi_arlen">
+         <obj_property name="ElementShortName">mem_axi_arlen[7:0]</obj_property>
+         <obj_property name="ObjectShortName">mem_axi_arlen[7:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/mem_axi_arsize">
+         <obj_property name="ElementShortName">mem_axi_arsize[2:0]</obj_property>
+         <obj_property name="ObjectShortName">mem_axi_arsize[2:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/mem_axi_arprot">
+         <obj_property name="ElementShortName">mem_axi_arprot[2:0]</obj_property>
+         <obj_property name="ObjectShortName">mem_axi_arprot[2:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/mem_axi_arburst">
+         <obj_property name="ElementShortName">mem_axi_arburst[1:0]</obj_property>
+         <obj_property name="ObjectShortName">mem_axi_arburst[1:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/mem_axi_arvalid">
+         <obj_property name="ElementShortName">mem_axi_arvalid</obj_property>
+         <obj_property name="ObjectShortName">mem_axi_arvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/mem_axi_arready">
+         <obj_property name="ElementShortName">mem_axi_arready</obj_property>
+         <obj_property name="ObjectShortName">mem_axi_arready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/mem_axi_rdata">
+         <obj_property name="ElementShortName">mem_axi_rdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">mem_axi_rdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/mem_axi_rvalid">
+         <obj_property name="ElementShortName">mem_axi_rvalid</obj_property>
+         <obj_property name="ObjectShortName">mem_axi_rvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_vdma/mem_axi_rready">
+         <obj_property name="ElementShortName">mem_axi_rready</obj_property>
+         <obj_property name="ObjectShortName">mem_axi_rready</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group15">
+      <obj_property name="label">Video AXIS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_enc/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_enc/resetn">
+         <obj_property name="ElementShortName">resetn</obj_property>
+         <obj_property name="ObjectShortName">resetn</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_enc/in_axis_tvalid">
+         <obj_property name="ElementShortName">in_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">in_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_enc/in_axis_tready">
+         <obj_property name="ElementShortName">in_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">in_axis_tready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_enc/in_axis_tdata">
+         <obj_property name="ElementShortName">in_axis_tdata[23:0]</obj_property>
+         <obj_property name="ObjectShortName">in_axis_tdata[23:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_enc/in_axis_tuser">
+         <obj_property name="ElementShortName">in_axis_tuser[0:0]</obj_property>
+         <obj_property name="ObjectShortName">in_axis_tuser[0:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_enc/out_axis_tvalid">
+         <obj_property name="ElementShortName">out_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">out_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/testbench/system_i/framebuffer/inst/svo_enc/out_axis_tready">
+         <obj_property name="ElementShortName">out_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">out_axis_tready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_enc/out_axis_tdata">
+         <obj_property name="ElementShortName">out_axis_tdata[23:0]</obj_property>
+         <obj_property name="ObjectShortName">out_axis_tdata[23:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/testbench/system_i/framebuffer/inst/svo_enc/out_axis_tuser">
+         <obj_property name="ElementShortName">out_axis_tuser[3:0]</obj_property>
+         <obj_property name="ObjectShortName">out_axis_tuser[3:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

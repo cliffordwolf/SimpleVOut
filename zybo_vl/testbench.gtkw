@@ -1,0 +1,64 @@
+[*]
+[*] GTKWave Analyzer v3.3.58 (w)1999-2014 BSI
+[*] Sat Oct  4 09:44:31 2014
+[*]
+[dumpfile] "/home/clifford/Work/handicraft/2014/simplevout/zybo/testbench.vcd"
+[dumpfile_mtime] "Sat Oct  4 09:36:11 2014"
+[dumpfile_size] 17839671
+[savefile] "/home/clifford/Work/handicraft/2014/simplevout/zybo/testbench.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-23.890598 2330000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testbench.
+[treeopen] testbench.system.
+[treeopen] testbench.system.svo_pong.
+[treeopen] testbench.system.svo_pong.compose_1.
+[sst_width] 205
+[signals_width] 252
+[sst_expanded] 1
+[sst_vpaned_height] 154
+@28
+testbench.system.video_tcard_tvalid
+@22
+testbench.system.video_tcard_tdata[17:0]
+@200
+-
+@28
+testbench.system.video_pong_tvalid
+@22
+testbench.system.video_pong_tdata[17:0]
+@200
+-
+@22
+testbench.vga_b[4:0]
+testbench.vga_g[5:0]
+@28
+testbench.vga_hs
+@22
+testbench.vga_r[4:0]
+@28
+testbench.vga_vs
+@200
+-
+@28
+testbench.system.svo_pong.compose_1.clk
+testbench.system.svo_pong.compose_1.resetn
+@29
+testbench.system.svo_pong.compose_1.enable
+@28
+testbench.system.svo_pong.compose_1.pipe_tvalid[2:0]
+@200
+-
+@22
+testbench.system.svo_pong.compose_1.in_axis_tdata[17:0]
+@28
+testbench.system.svo_pong.compose_1.in_axis_tvalid
+@200
+-
+@22
+testbench.system.svo_pong.compose_1.out_axis_tdata[17:0]
+@28
+testbench.system.svo_pong.compose_1.out_axis_tvalid
+[pattern_trace] 1
+[pattern_trace] 0
