@@ -7,7 +7,7 @@ in various formats. The cores connect using AXI-streams. Most configurations
 (resolution, framerate, colordepth, etc.) are set at compile-time using
 Verilog parameters. See svo_defines.vh for details on those parameters.
 
-Lib(X)SVF is licensed under the ISC license:
+SimpleVOut is licensed under the ISC license:
 
     Copyright (C) 2014  Clifford Wolf <clifford@clifford.at>
 
