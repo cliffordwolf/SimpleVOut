@@ -26,69 +26,115 @@ module svo_tmds (
 	input [7:0] din,
 	output reg [9:0] dout
 );
-	function [3:0] count_set_bits;
-		input [9:0] bits;
-		integer i;
-		begin
-			count_set_bits = 0;
-			for (i = 0; i < 9; i = i+1)
-				count_set_bits = count_set_bits + bits[i];
-		end
-	endfunction
 
-	function [3:0] count_transitions;
+
+	// Variable and function names below match the spec names for
+	// better readability when comparing to spec encoder flow diagram.
+	wire [7:0] D = din;
+
+	function [3:0] N1;
+		// Count the number of '1' bits.
 		input [7:0] bits;
 		integer i;
 		begin
-			count_transitions = 0;
-			for (i = 0; i < 7; i = i+1)
-				count_transitions = count_transitions + (bits[i] != bits[i+1]);
+			N1 = 0;
+			for (i = 0; i < 8; i = i+1)
+				N1 = N1 + bits[i];
 		end
 	endfunction
 
-	wire [7:0] din_xor;
-	assign din_xor[0] = din[0];
-	assign din_xor[1] = din[1] ^ din_xor[0];
-	assign din_xor[2] = din[2] ^ din_xor[1];
-	assign din_xor[3] = din[3] ^ din_xor[2];
-	assign din_xor[4] = din[4] ^ din_xor[3];
-	assign din_xor[5] = din[5] ^ din_xor[4];
-	assign din_xor[6] = din[6] ^ din_xor[5];
-	assign din_xor[7] = din[7] ^ din_xor[6];
+	function [3:0] N0;
+		// Count the number of '0' bits.
+		input [7:0] bits;
+		integer i;
+		begin
+			N0 = 0;
+			for (i = 0; i < 8; i = i+1)
+				N0 = N0 + !bits[i];
+		end
+	endfunction
 
-	wire [7:0] din_xnor;
-	assign din_xnor[0] = din[0];
-	assign din_xnor[1] = din[1] ^~ din_xnor[0];
-	assign din_xnor[2] = din[2] ^~ din_xnor[1];
-	assign din_xnor[3] = din[3] ^~ din_xnor[2];
-	assign din_xnor[4] = din[4] ^~ din_xnor[3];
-	assign din_xnor[5] = din[5] ^~ din_xnor[4];
-	assign din_xnor[6] = din[6] ^~ din_xnor[5];
-	assign din_xnor[7] = din[7] ^~ din_xnor[6];
-
-	reg signed [7:0] cnt;
-	reg [9:0] dout_buf, dout_buf2, m;
+	reg [9:0] dout_buf2, q_out, q_out_next;
+	reg [3:0] N0_q_m, N1_q_m;
+	reg signed [7:0] cnt, cnt_next, cnt_tmp;
+	reg [8:0] q_m;
 
 	always @(posedge clk) begin
 		if (!resetn) begin
-			cnt <= 0;
+			cnt   <= 0; // Data stream disparity count used for DC balance
+			q_out <= 0;
 		end else if (!de) begin
-			cnt <= 0;
-			case (ctrl)
-				2'b00: dout_buf <= 10'b1101010100;
-				2'b01: dout_buf <= 10'b0010101011;
-				2'b10: dout_buf <= 10'b0101010100;
-				2'b11: dout_buf <= 10'b1010101011;
+			cnt   <= 0; // Reset disaprity when not actively displaying
+			case (ctrl) // See spec section "Control Period Coding"
+				2'b00: q_out <= 10'b1101010100;
+				2'b01: q_out <= 10'b0010101011;
+				2'b10: q_out <= 10'b0101010100;
+				2'b11: q_out <= 10'b1010101011;
 			endcase
 		end else begin
-			m = count_transitions(din_xor) < count_transitions(din_xnor) ? {2'b01, din_xor} : {2'b00, din_xnor};
-			if ((count_set_bits(m[7:0]) > 4) == (cnt > 0)) m = {1'b1, m[8], ~m[7:0]};
-			cnt <= cnt + count_set_bits(m) - 5;
-			dout_buf <= m;
+			// See spec flow diagram in section "Video Data Coding"
+			if ((N1(D) > 4) | ((N1(D) == 4) & (D[0] == 0))) begin
+				q_m[0] =           D[0];
+				q_m[1] = q_m[0] ^~ D[1];
+				q_m[2] = q_m[1] ^~ D[2];
+				q_m[3] = q_m[2] ^~ D[3];
+				q_m[4] = q_m[3] ^~ D[4];
+				q_m[5] = q_m[4] ^~ D[5];
+				q_m[6] = q_m[5] ^~ D[6];
+				q_m[7] = q_m[6] ^~ D[7];
+				q_m[8] = 1'b0;
+			end
+			else begin
+				q_m[0] =          D[0];
+				q_m[1] = q_m[0] ^ D[1];
+				q_m[2] = q_m[1] ^ D[2];
+				q_m[3] = q_m[2] ^ D[3];
+				q_m[4] = q_m[3] ^ D[4];
+				q_m[5] = q_m[4] ^ D[5];
+				q_m[6] = q_m[5] ^ D[6];
+				q_m[7] = q_m[6] ^ D[7];
+				q_m[8] = 1'b1;
+			end
+
+			N0_q_m = N0(q_m[7:0]);
+			N1_q_m = N1(q_m[7:0]);
+
+			if ((cnt == 0) | (N1_q_m == N0_q_m)) begin
+				q_out_next[9]    = ~q_m[8];
+				q_out_next[8]    =  q_m[8];
+				q_out_next[7:0]  = (q_m[8] ? q_m[7:0] : ~q_m[7:0]);
+				if (q_m[8] == 0) begin
+					cnt_next = cnt + (N0_q_m - N1_q_m);
+				end else begin
+					cnt_next = cnt + (N1_q_m - N0_q_m);
+				end
+			end else if (((cnt > 0) & (N1_q_m > N0_q_m)) | (((cnt < 0) & (N0_q_m > N1_q_m)))) begin
+				q_out_next[9]    =  1'b1;
+				q_out_next[8]    =  q_m[8];
+				q_out_next[7:0]  = ~q_m[7:0];
+				cnt_tmp          = cnt + (N0_q_m - N1_q_m);
+				if (q_m[8]) begin
+					cnt_next = cnt_tmp + 2'h2;
+				end else begin
+					cnt_next = cnt_tmp;
+				end
+			end else begin
+				q_out_next[9]    =  1'b0;
+				q_out_next[8]    =  q_m[8];
+				q_out_next[7:0]  =  q_m[7:0];
+				cnt_tmp          = cnt + (N1_q_m - N0_q_m);
+				if (q_m[8]) begin
+					cnt_next = cnt_tmp;
+				end else begin
+					cnt_next = cnt_tmp - 2'h2;
+				end
+			end
+			cnt   <= cnt_next;
+			q_out <= q_out_next;
 		end
 
 		// add two additional ff stages, give synthesis retime some slack to work with
-		dout_buf2 <= dout_buf;
+		dout_buf2 <= q_out;
 		dout <= dout_buf2;
 	end
 endmodule
