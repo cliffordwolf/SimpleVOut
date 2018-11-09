@@ -675,7 +675,7 @@ function integer svo_clog2; \
     if (v > 0) \
       v = v - 1; \
     svo_clog2 = 0; \
-    while (v) begin \
+    while (v != 0) begin \
       v = v >> 1; \
       svo_clog2 = svo_clog2 + 1; \
     end \
